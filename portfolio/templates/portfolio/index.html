@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junior TechHub Portfolio</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="container">
+  <nav>
+    <div class="logo">JuniorTechHub.</div>
+    <ul id="sidemenu">
+      <li><a href="#header">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#services">My Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><i class="fas fa-times" onclick="closemenu()"></i></li>
+    </ul>
+    <i class="fas fa-bars" onclick="openmenu()"></i>
+  </nav>
+</div>
+<div id="overlay" onclick="closemenu()"></div>
+
+<!-- Hero Section -->
+<section id="header">
+  <div class="container hero">
+    <div class="hero-text">
+      <p>Web Developer / Data Analyst</p>
+      <h1>Hi, I'm <span>Alex Saibulu</span></h1>
+      <p>
+        I am a passionate Computer & Electronics Engineer <br>
+        specializing in Web Development, Data Analysis, and Graphic Design.<br>
+        I create solutions that are innovative, user-friendly, and effective.
+      </p>
+    </div>
+    <div class="hero-img">
+      <img src="{% static 'images/caleb.jpg' %}" alt="Profile Image">
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+  <div class="container">
+    <div class="row">
+      <div class="about-col-1">
+        <img src="{% static 'images/background.jpg' %}" alt="About Image">
+      </div>
+      <div class="about-col-2">
+        <h1 class="sub-title">About Me</h1>
+        <p>I'm a Computer & Electronics Engineer, skilled in Full Stack Web Development and Data Analysis.</p>
+
+        <div class="tab-titles">
+          <p class="tab-links active-link" onclick="opentab(event, 'skills')">Skills</p>
+          <p class="tab-links" onclick="opentab(event, 'experience')">Experience</p>
+          <p class="tab-links" onclick="opentab(event, 'education')">Education</p>
+        </div>
+
+        <div class="tab-contents active-tab" id="skills">
+          <ul>
+            <li><span>Web Development</span><br>Frontend & Backend Development</li>
+            <li><span>Data Analysis</span><br>SQL, Excel, Power BI</li>
+            <li><span>Graphic Design</span><br>Branding, Flyers, Logos among others</li>
+          </ul>
+        </div>
+
+        <div class="tab-contents" id="experience">
+          <ul>
+            <li><span>Emobilis Technologies(certified)</span><br>Junior Web Developer</li>
+            <li><span>Techrush Program(certified)</span><br>Data Analysis Trainee</li>
+            <li><span>Graphic Designer Program</span><br>Designed branding, flyers, and logos</li>
+          </ul>
+        </div>
+
+        <div class="tab-contents" id="education">
+          <ul>
+            <li><span>Mount Kenya University (2022-2026)</span><br>Bachelor of Technology in Computers & Electronics</li>
+            <li><span>High School (2017-2022)</span><br>KCSE Grade: B-</li>
+            <li><span>Primary School (2008-2016)</span><br>KCPE Score: 318</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="container">
+    <h1 class="sub-title">My Services</h1>
+    <div class="services-list">
+      <div>
+        <i class="fas fa-code"></i>
+        <h2>Web Development</h2>
+        <p>Custom Websites, Frontend, Backend, and Maintenance.</p>
+      </div>
+      <div>
+        <i class="fas fa-chart-line"></i>
+        <h2>Data Analysis</h2>
+        <p>Data Cleaning, Visualizations, Dashboards & Insights.</p>
+      </div>
+      <div>
+        <i class="fas fa-paint-brush"></i>
+        <h2>Graphic Design</h2>
+        <p>Logos, Branding, Social Media Graphics, Print Designs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio -->
+<section id="portfolio" class="visible">
+  <div class="container">
+    <h1 class="sub-title">My Work</h1>
+    <div class="work-list">
+      <div class="work">
+        <img src="{% static 'images/webdev1.png' %}" alt="Web Design">
+        <div class="layer">
+          <h3>Web Designing</h3>
+          <p>Modern, user-friendly responsive layouts.</p>
+        </div>
+      </div>
+      <div class="work">
+        <img src="{% static 'images/analysis.png' %}" alt="Data Analysis">
+        <div class="layer">
+          <h3>Data Analysis</h3>
+          <p>Transforming data into insights for better decisions.</p>
+        </div>
+      </div>
+      <div class="work">
+        <img src="{% static 'images/graphic.png' %}" alt="Graphic Design">
+        <div class="layer">
+          <h3>Graphic Design</h3>
+          <p>Creative visuals for brands and businesses.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:30px;">
+      <button class="btn see-more-btn" onclick="showGallery()">See More</button>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="contact-left">
+        <h1 class="sub-title">Contact Me</h1>
+        <p><i class="fas fa-envelope"></i> alexsaibulu148@gmail.com</p>
+        <p><i class="fas fa-phone-square"></i> 0727 409 118</p>
+        <div class="social-icons">
+          <a href="https://github.com/topics/login"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <a href="{% static 'images/my-cv.pdf' %}" download class="btn">Download CV</a>
+      </div>
+      <div class="contact-right">
+        <form name="submit-to-google-sheet">
+          <input type="text" name="Name" placeholder="Your Name" required>
+          <input type="email" name="Email" placeholder="Your Email" required>
+          <textarea rows="6" name="Message" placeholder="Your Message"></textarea>
+          <button type="submit" class="btn">Submit</button>
+        </form>
+        <span id="msg"></span>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>&copy; 2025 Junior TechHub. All Rights Reserved.</p>
+  </div>
+</section>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+function opentab(event, tabname) {
+  document.querySelectorAll(".tab-links").forEach(l => l.classList.remove("active-link"));
+  document.querySelectorAll(".tab-contents").forEach(c => c.classList.remove("active-tab"));
+  event.currentTarget.classList.add("active-link");
+  document.getElementById(tabname).classList.add("active-tab");
+}
+
+var sidemenu = document.getElementById("sidemenu");
+var overlay = document.getElementById("overlay");
+function openmenu() { sidemenu.classList.add("active"); overlay.classList.add("active"); }
+function closemenu() { sidemenu.classList.remove("active"); overlay.classList.remove("active"); }
+</script>
+
+</body>
+</html>
