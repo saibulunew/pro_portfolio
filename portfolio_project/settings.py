@@ -13,14 +13,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ========================
 # SECURITY
 # ========================
-SECRET_KEY = 'django-insecure-1@hnzrab99!bp^v4i$&%)*4bcp1xq(1qhp8n!(w559cdz(cl1!'
-DEBUG = True
-ALLOWED_HOSTS = [
-    "portfolipro-junior1.onrender.com",   # your main URL
-    "portfolipro-junior1-z.onrender.com", # the temporary Render URL
-    "127.0.0.1",                          # local testing
-]
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-1@hnzrab99!bp^v4i$&%)*4bcp1xq(1qhp8n!(w559cdz(cl1!')
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
+ALLOWED_HOSTS = [
+    "portfolipro-junior1.onrender.com",   # main URL
+    "portfolipro-junior1-z.onrender.com", # temporary Render URL
+    "127.0.0.1",                           # local testing
+    "localhost",
+]
 
 # ========================
 # APPLICATIONS
@@ -73,7 +74,7 @@ WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'portfolio' / 'templates'],  # or BASE_DIR / 'templates' if you prefer global
+        'DIRS': [BASE_DIR / 'portfolio' / 'templates'],  # or BASE_DIR / 'templates'
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,8 +119,8 @@ USE_TZ = True
 # STATIC FILES
 # ========================
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']  # for global static files during development
-STATIC_ROOT = BASE_DIR / 'staticfiles'   # for production collectstatic
+STATICFILES_DIRS = [BASE_DIR / 'static']      # for development
+STATIC_ROOT = BASE_DIR / 'staticfiles'        # collectstatic for production
 
 # ========================
 # MEDIA FILES
@@ -131,3 +132,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # DEFAULT AUTO FIELD
 # ========================
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ========================
+# SECURITY & PRODUCTION SETTINGS (Optional)
+# ========================
+# Ensure HTTPS is used in production
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
