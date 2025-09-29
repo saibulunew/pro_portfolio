@@ -15,7 +15,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ========================
 SECRET_KEY = 'django-insecure-1@hnzrab99!bp^v4i$&%)*4bcp1xq(1qhp8n!(w559cdz(cl1!'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "portfolipro-junior1.onrender.com",   # your main URL
+    "portfolipro-junior1-z.onrender.com", # the temporary Render URL
+    "127.0.0.1",                          # local testing
+]
+
 
 # ========================
 # APPLICATIONS
