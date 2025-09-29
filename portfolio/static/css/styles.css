@@ -4,10 +4,11 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth; /* smooth scroll for anchor links */
 }
 
 body {
-  background: #1a1a1a;
+  background: #1a1a1a; /* dark background */
   color: #fff;
 }
 
@@ -34,7 +35,7 @@ nav {
 .logo {
   font-size: 25px;
   font-weight: 700;
-  color: #6ad40d;
+  color: rgb(218, 104, 10);
 }
 
 nav ul {
@@ -100,7 +101,7 @@ nav .fas {
 }
 
 .hero-text span {
-  color: #ff004f;
+  color: #ff004f; /* highlight color */
 }
 
 .hero-img {
@@ -273,24 +274,42 @@ nav .fas {
   height: 100%;
 }
 
+/* SEE MORE BUTTON */
+.see-more-btn {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.see-more-btn:hover {
+  color: #ccff00;
+  border-color: #55ff00;
+}
+
+
 /* ---------------- BUTTONS ---------------- */
 .btn {
   display: inline-block;
   padding: 12px 28px;
   margin: 20px auto;
-  border: 1px solid green;
   border-radius: 6px;
-  background: #222;
+  background: #2C5364;
   color: #fff;
   font-size: 15px;
   transition: 0.3s;
   cursor: pointer;
   text-align: center;
+  border: none;
 }
 
 .btn:hover {
-  background: green;
-  box-shadow: 0 6px 15px rgba(0,255,0,0.3);
+  background: #ff004f;
+  box-shadow: 0 6px 15px rgba(255,0,79,0.3);
 }
 
 /* ---------------- CONTACT ---------------- */
@@ -327,7 +346,7 @@ nav .fas {
 .social-icons a {
   margin-right: 15px;
   font-size: 20px;
-  color: #fff;
+  color: #ff004f;
   transition: 0.3s;
 }
 
@@ -349,7 +368,7 @@ nav .fas {
     position: fixed;
     top: 0;
     right: -220px;
-    background: #ff004f; /* 🔴 red background by default */
+    background: #ff004f;
     width: 200px;
     height: 100vh;
     padding-top: 60px;
@@ -358,7 +377,7 @@ nav .fas {
   }
 
   nav ul li a {
-    color: #fff; /* links stay readable */
+    color: #fff;
   }
 
   nav .fas {

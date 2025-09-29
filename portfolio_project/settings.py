@@ -1,59 +1,34 @@
-"""
-Django settings for authsystem project.
-"""
-
-from pathlib import Path
 import os
+from pathlib import Path
 
-# ========================
-# BASE DIRECTORIES
-# ========================
+# ---------------- BASE ----------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# ========================
-# SECURITY
-# ========================
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-1@hnzrab99!bp^v4i$&%)*4bcp1xq(1qhp8n!(w559cdz(cl1!')
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+# ---------------- SECURITY ----------------
+SECRET_KEY = 'n3v^p@x8g!k$1z7u%q&6c*e4r!w2h0m#5t^y9b8f1s0l!o2a'
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    "portfolipro-junior1.onrender.com",   # main URL
-    "portfolipro-junior1-z.onrender.com", # temporary Render URL
-    "127.0.0.1",                           # local testing
-    "localhost",
+    'pro-portfolio.onrender.com',  # your Render app URL
+    'localhost',
+    '127.0.0.1',
 ]
 
-# ========================
-# APPLICATIONS
-# ========================
+# ---------------- APPLICATIONS ----------------
 INSTALLED_APPS = [
-    # Django default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Local apps
-    'portfolio',
-
-    # Third-party apps
-    'crispy_forms',
-    'crispy_bootstrap5',
+    'portfolio', 
 ]
 
-# ========================
-# CRISPY FORMS SETTINGS
-# ========================
-CRISPY_ALLOWED_TEMPLATE_PACKS = ["bootstrap5"]
-CRISPY_TEMPLATE_PACK = "bootstrap5"
-
-# ========================
-# MIDDLEWARE
-# ========================
+# ---------------- MIDDLEWARE ----------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # for static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -62,24 +37,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# ========================
-# ROOT URLS & WSGI
-# ========================
-ROOT_URLCONF = 'portfolio_project.urls'
-WSGI_APPLICATION = 'portfolio_project.wsgi.application'
+ROOT_URLCONF = 'portfolio.urls'
 
-# ========================
-# TEMPLATES
-# ========================
+# ---------------- TEMPLATES ----------------
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'portfolio' / 'templates'],  # or BASE_DIR / 'templates'
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',  # required by crispy forms
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -87,9 +56,10 @@ TEMPLATES = [
     },
 ]
 
-# ========================
-# DATABASE
-# ========================
+WSGI_APPLICATION = 'portfolio_project.wsgi.application'
+
+
+# ---------------- DATABASE ----------------
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -97,46 +67,31 @@ DATABASES = {
     }
 }
 
-# ========================
-# PASSWORD VALIDATORS
-# ========================
+# ---------------- PASSWORD VALIDATION ----------------
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
 
-# ========================
-# LANGUAGE & TIMEZONE
-# ========================
+# ---------------- INTERNATIONALIZATION ----------------
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 USE_I18N = True
 USE_TZ = True
 
-# ========================
-# STATIC FILES
-# ========================
+# ---------------- STATIC FILES ----------------
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']      # for development
-STATIC_ROOT = BASE_DIR / 'staticfiles'        # collectstatic for production
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# ========================
-# MEDIA FILES
-# ========================
+# ---------------- MEDIA FILES ----------------
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# ========================
-# DEFAULT AUTO FIELD
-# ========================
+# ---------------- DEFAULT AUTO FIELD ----------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# ========================
-# SECURITY & PRODUCTION SETTINGS (Optional)
-# ========================
-# Ensure HTTPS is used in production
-SECURE_SSL_REDIRECT = not DEBUG
-SESSION_COOKIE_SECURE = not DEBUG
-CSRF_COOKIE_SECURE = not DEBUG
+# ---------------- EMAIL CONFIGURATION ----------------
