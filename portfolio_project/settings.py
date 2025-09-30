@@ -9,7 +9,8 @@ SECRET_KEY = 'n3v^p@x8g!k$1z7u%q&6c*e4r!w2h0m#5t^y9b8f1s0l!o2a'
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'pro-portfolio.onrender.com',  # your Render app URL
+    'pro-portfolio.onrender.com',
+    'pro-portfolio-h33r.onrender.com'
     'localhost',
     '127.0.0.1',
 ]
