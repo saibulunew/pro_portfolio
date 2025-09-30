@@ -1,19 +1,15 @@
 import os
 from pathlib import Path
-import secrets
 
 # ---------------- BASE ----------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ---------------- SECURITY ----------------
-# Use environment variable if available, else default secret key
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'n3v^p@x8g!k$1z7u%q&6c*e4r!w2h0m#5t^y9b8f1s0l!o2a')
-
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'g0k^7m#8!q=4ys7zi#l*f%3@u%u#y6w$!m$so6e2wv4ha8gk^t')
 DEBUG = False
 
-# ALLOWED_HOSTS from Render environment variable
-# In Render dashboard, set ALLOWED_HOSTS = portfolio.onrender.com,portfolio-h33r.onrender.com,localhost,127.0.0.1
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'portfolio.onrender.com,portfolio-h33r.onrender.com,localhost,127.0.0.1').split(',')
+# ALLOWED_HOSTS pulled from Render's environment variable
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'portfolio.onrender.com,localhost,127.0.0.1').split(',')
 
 # ---------------- APPLICATIONS ----------------
 INSTALLED_APPS = [
@@ -23,13 +19,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'portfolio',  # your app
+    'portfolio',
 ]
 
 # ---------------- MIDDLEWARE ----------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # For serving static files
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -38,7 +34,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# ---------------- URLS & WSGI ----------------
 ROOT_URLCONF = 'portfolio_project.urls'
+WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 
 # ---------------- TEMPLATES ----------------
 TEMPLATES = [
@@ -57,8 +55,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'portfolio_project.wsgi.application'
-
 # ---------------- DATABASE ----------------
 DATABASES = {
     'default': {
@@ -69,13 +65,10 @@ DATABASES = {
 
 # ---------------- PASSWORD VALIDATION ----------------
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# ---------------- INTERNATIONALIZATION ----------------
+# ---------------- LOCALIZATION ----------------
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Africa/Nairobi'
 USE_I18N = True
@@ -84,8 +77,7 @@ USE_TZ = True
 # ---------------- STATIC FILES ----------------
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'portfolio' / 'static']
-
-STATIC_ROOT = BASE_DIR / 'staticfiles'    # Render collectstatic
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # ---------------- MEDIA FILES ----------------
