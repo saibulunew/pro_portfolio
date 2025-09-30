@@ -1,16 +1,5 @@
-# Python
-*.pyc
-__pycache__/
-*.pyo
-*.pyd
-*.sqlite3
-
-# Virtual environment
 venv/
-
-# IDEs
-.vscode/
-.idea/
-
-# OS
-desktop.ini
+__pycache__/
+*.pyc
+db.sqlite3
+staticfiles/
