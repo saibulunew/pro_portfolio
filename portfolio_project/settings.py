@@ -5,12 +5,16 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ---------------- SECURITY ----------------
+# Fixed secret key for Render deployment
 SECRET_KEY = 'n3v^p@x8g!k$1z7u%q&6c*e4r!w2h0m#5t^y9b8f1s0l!o2a'
+
+# Debug should be False for production
 DEBUG = False
 
+# ---------------- ALLOWED HOSTS ----------------
 ALLOWED_HOSTS = [
-    'pro-portfolio.onrender.com',
-    'pro-portfolio-h33r.onrender.com'
+    'portfolio.onrender.com',       # your Render URL
+    'portfolio-h33r.onrender.com',  # Render auto-generated URL
     'localhost',
     '127.0.0.1',
 ]
@@ -23,13 +27,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'portfolio', 
+    'portfolio',  # your app
 ]
 
 # ---------------- MIDDLEWARE ----------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # for static files
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # For static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -38,7 +42,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'portfolio.urls'
+ROOT_URLCONF = 'portfolio_project.urls'
 
 # ---------------- TEMPLATES ----------------
 TEMPLATES = [
@@ -59,7 +63,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 
-
 # ---------------- DATABASE ----------------
 DATABASES = {
     'default': {
@@ -70,10 +73,10 @@ DATABASES = {
 
 # ---------------- PASSWORD VALIDATION ----------------
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 # ---------------- INTERNATIONALIZATION ----------------
@@ -84,8 +87,8 @@ USE_TZ = True
 
 # ---------------- STATIC FILES ----------------
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']  # local dev
+STATIC_ROOT = BASE_DIR / 'staticfiles'    # collectstatic for Render
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # ---------------- MEDIA FILES ----------------
@@ -96,3 +99,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ---------------- EMAIL CONFIGURATION ----------------
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+# EMAIL_HOST_PASSWORD removed as requested
