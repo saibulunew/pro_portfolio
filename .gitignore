@@ -13,4 +13,6 @@ staticfiles/
 
 # Local environment files (if you add .env later)
 .env
+# ignore freeze files
+freeze.txt
 
