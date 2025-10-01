@@ -1,5 +1,16 @@
+# Virtual environment
 venv/
+
+# Python cache
 __pycache__/
 *.pyc
+
+# Database
 db.sqlite3
+
+# Static files collected by collectstatic
 staticfiles/
+
+# Local environment files (if you add .env later)
+.env
+
