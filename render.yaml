@@ -2,6 +2,7 @@ services:
   - type: web
     name: portfolio
     env: python
+    runtime: python-3.10.14   # 👈 downgrade runtime for Open3D compatibility
     buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
     startCommand: gunicorn portfolio_project.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
