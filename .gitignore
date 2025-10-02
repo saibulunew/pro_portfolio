@@ -1,37 +1,26 @@
 # Python
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
 *.pyd
-*.pdb
-*.egg-info/
-*.egg
-*.log
 
 # Virtual environment
 venv/
 .env
 
-# Django specific
+# SQLite database
 db.sqlite3
+
+# Django static files (collected)
 staticfiles/
-media/
 
-# Docker
-*.pid
-*.seed
-*.bak
-*.swp
-*~ 
-*.tmp
-
-# VSCode / IDE
+# VS Code & system files
 .vscode/
-.idea/
-*.code-workspace
-
-# OS files
+*.log
+*.ini
 .DS_Store
-Thumbs.db
 
-
+# Docker artifacts
+*.dockerfile
+*.tar
+*.pid
