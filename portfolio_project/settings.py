@@ -5,11 +5,16 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ---------------- SECURITY ----------------
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'g0k^7m#8!q=4ys7zi#l*f%3@u%u#y6w$!m$so6e2wv4ha8gk^t')
-DEBUG = False
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
 
-# ALLOWED_HOSTS pulled from Render's environment variable
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'portfolio.onrender.com,localhost,127.0.0.1').split(',')
+# Toggle debug using env var: DEBUG=True for local, False on Render
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+
+# ALLOWED_HOSTS pulled from Render env var
+ALLOWED_HOSTS = os.environ.get(
+    'ALLOWED_HOSTS',
+    'portfolio.onrender.com,localhost,127.0.0.1'
+).split(',')
 
 # ---------------- APPLICATIONS ----------------
 INSTALLED_APPS = [

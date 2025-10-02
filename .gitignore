@@ -1,18 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.log
+
 # Virtual environment
 venv/
-
-# Python cache
-__pycache__/
-*.pyc
-
-# Database
-db.sqlite3
-
-# Static files collected by collectstatic
-staticfiles/
-
-# Local environment files (if you add .env later)
 .env
-# ignore freeze files
-freeze.txt
+
+# Django specific
+db.sqlite3
+staticfiles/
+media/
+
+# Docker
+*.pid
+*.seed
+*.bak
+*.swp
+*~ 
+*.tmp
+
+# VSCode / IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
 
