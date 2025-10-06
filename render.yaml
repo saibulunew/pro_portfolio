@@ -7,8 +7,9 @@ services:
     autoDeploy: true
     envVars:
       - key: DJANGO_SECRET_KEY
-        generateValue: true
+        value: "dG9Z8mN4qV!w7R2sF9uL0xPzAe3hBv6YpKjQ2tM4cUo1nS"
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
         value: "portfolio.onrender.com,localhost,127.0.0.1"
+
