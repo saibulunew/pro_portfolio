@@ -198,7 +198,7 @@
       .then(response => {
         msg.innerHTML = "✅ Message sent successfully";
         form.reset();
-        setTimeout(() => msg.innerHTML = "", 3000);
+        setTimeout(() => msg.innerHTML = "", 2500);
       })
       .catch(error => console.error('Error!', error.message));
   });
