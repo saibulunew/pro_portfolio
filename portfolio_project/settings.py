@@ -11,10 +11,8 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # ALLOWED_HOSTS pulled from Render env var
-ALLOWED_HOSTS = os.environ.get(
-    'ALLOWED_HOSTS',
-    'pro-portfolio-1-thlu.onrender.com,localhost,127.0.0.1'
-).split(',')
+ALLOWED_HOSTS = ['pro-portfolio-1-thlu.onrender.com', 'localhost', '127.0.0.1']
+
 
 
 # ---------------- APPLICATIONS ----------------
