@@ -12,10 +12,10 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # ALLOWED_HOSTS pulled from Render env var
 ALLOWED_HOSTS = os.environ.get(
-    'pro-portfolio-1-thlu.onrender.com'
     'ALLOWED_HOSTS',
-    'portfolio.onrender.com,localhost,127.0.0.1'
+    'pro-portfolio-1-thlu.onrender.com,localhost,127.0.0.1'
 ).split(',')
+
 
 # ---------------- APPLICATIONS ----------------
 INSTALLED_APPS = [
